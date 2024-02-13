@@ -1,0 +1,11 @@
+# Dependency directories
+/node_modules
+/dist
+
+# Build files
+bundle.js
+
+# OS or editor files
+.DS_Store
+.idea/
+.vscode/
