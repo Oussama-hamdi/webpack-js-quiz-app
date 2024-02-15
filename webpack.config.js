@@ -1,5 +1,3 @@
-// Go to minute 15:00
-
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
