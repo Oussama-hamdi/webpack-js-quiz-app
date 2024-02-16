@@ -1,8 +1,11 @@
-// Go Minute 29:30
+// Go Minute 44:00
 
 import "../css/bootstrap.min.css";
 import "../css/style.css";
+import Quiz from "./quiz";
+import Questions from "./questions";
 
-const add = (n1, n2) => n1 + n2;
+const questionsClass = new Questions();
+const quizClass = new Quiz();
 
-console.log(add(1, 2));
+console.log(questionsClass.questions);

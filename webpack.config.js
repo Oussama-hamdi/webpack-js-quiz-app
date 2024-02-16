@@ -26,7 +26,7 @@ module.exports = {
       template: "./src/index.html",
     }),
   ],
-  devSerer: {
+  devServer: {
     open: true,
     port: 9000,
   },
