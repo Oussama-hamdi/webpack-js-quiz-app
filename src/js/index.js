@@ -1,4 +1,4 @@
-// Go Minute 01:00:10
+// Go Minute 01:12:00
 
 import "../css/bootstrap.min.css";
 import "../css/style.css";
@@ -11,8 +11,14 @@ const quiz = new Quiz({
   questionsContainer: document.querySelector("#questions-container"),
 });
 
-console.log(questionsClass.questions);
+const submitButton = document.querySelector("#submit");
 
-document.querySelector("#start").addEventListener("click", () => {
+document.querySelector("#start").addEventListener("click", (e) => {
   quiz.init();
+  e.target.classList.add("hide");
+  submitButton.classList.remove("hide");
+});
+
+submitButton.addEventListener("click", () => {
+  quiz.collectUserAnswers();
 });

@@ -10,3 +10,11 @@ body {
 *::after {
   box-sizing: border-box;
 }
+
+.hide {
+  display: none;
+}
+
+.container {
+  margin: 50px auto;
+}
