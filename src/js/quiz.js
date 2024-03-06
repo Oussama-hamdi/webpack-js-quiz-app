@@ -37,11 +37,11 @@ class Quiz {
       class="custom-control-input"
       type="radio"
       name="a${questionNumber + 1}"
-      id="a${questionNumber + 1}"
+      id="a${questionNumber}${key}"
       value="${key}"
       checked=""
     />
-    <label class="form-check-label" for="a${questionNumber + 1}">${
+    <label class="form-check-label" for="a${questionNumber}${key}">${
         answers[key]
       }</label>
     </div>`;
