@@ -9,11 +9,13 @@ const questionsClass = new Questions();
 const quiz = new Quiz({
   questions: questionsClass.questions,
   questionsContainer: document.querySelector("#questions-container"),
+  resultContainer: document.querySelector("#result"),
 });
 
 const submitButton = document.querySelector("#submit");
+const startButton = document.querySelector("#start");
 
-document.querySelector("#start").addEventListener("click", (e) => {
+startButton.addEventListener("click", (e) => {
   quiz.init();
   e.target.classList.add("hide");
   submitButton.classList.remove("hide");
@@ -21,4 +23,7 @@ document.querySelector("#start").addEventListener("click", (e) => {
 
 submitButton.addEventListener("click", () => {
   quiz.collectUserAnswers();
+  quiz.displayResults();
+  startButton.classList.remove("hide");
+  submitButton.classList.add("hide");
 });

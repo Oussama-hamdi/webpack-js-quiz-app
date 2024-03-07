@@ -2,10 +2,11 @@ class Quiz {
   constructor(config) {
     this.questions = config.questions;
     this.questionsContainer = config.questionsContainer;
+    this.resultContainer = config.resultContainer;
   }
 
   init() {
-    console.log("Quiz Started", this.questions);
+    this.resultContainer.innerHTML = "";
     this.displayQuestions();
   }
 
@@ -18,6 +19,8 @@ class Quiz {
       <div class="card-header">Q${index + 1}: ${question.title}</div>
       <div class="card-body">
         <div class="form-group user-answers">
+        <span class="badge bg-success hide">Correct</span>
+        <span class="badge bg-danger hide">Wrong</span>
           ${this.displayAnswers(question.answers, index)}
         </div>
       </div>
@@ -50,17 +53,34 @@ class Quiz {
   }
 
   collectUserAnswers() {
-    const userAnswers = [];
+    const userAnswers = document.querySelectorAll(".user-answers");
+    let currentAnswer = "";
+    let correctAnswers = 0;
 
     this.questions.forEach((question, index) => {
-      const answer = this.questionsContainer.querySelector(
-        `input[name="a${index + 1}"]:checked`
-      ).value;
+      if (!userAnswers[index].querySelector("input:checked")) return;
+      currentAnswer = userAnswers[index].querySelector("input:checked").value;
 
-      userAnswers.push(answer);
+      if (currentAnswer === question.correctAnswer) {
+        ++correctAnswers;
+        userAnswers[index].querySelector(".bg-danger").classList.add("hide");
+        userAnswers[index]
+          .querySelector(".bg-success")
+          .classList.remove("hide");
+      } else {
+        userAnswers[index].querySelector(".bg-success").classList.add("hide");
+        userAnswers[index].querySelector(".bg-danger").classList.remove("hide");
+      }
     });
 
-    console.log(userAnswers);
+    return correctAnswers;
+  }
+
+  displayResults() {
+    const correctAnswers = this.collectUserAnswers();
+    const totalQuestions = this.questions.length;
+
+    this.resultContainer.innerHTML = `<h1 style="text-align: center; color:#2196f3;">Your score is: ${correctAnswers} / ${totalQuestions}</h1>`;
   }
 }
 
