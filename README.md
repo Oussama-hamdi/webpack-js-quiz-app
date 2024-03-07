@@ -11,6 +11,12 @@ The JavaScript Quiz App is a simple quiz application where users can answer mult
 - JavaScript (ES6)
 - Webpack
 
+### Available Scripts
+
+- `npm run start:dev`: Starts the webpack-dev-server in development mode.
+- `npm run compile`: Compiles the project using Webpack in development mode.
+- `npm run serve`: Starts the webpack-dev-server.
+
 ## Getting Started
 
 To run this project locally, follow these steps:
